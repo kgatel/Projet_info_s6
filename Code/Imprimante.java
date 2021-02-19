@@ -84,6 +84,7 @@ public class Imprimante extends AppareilElectronique{
 	//deux procédures changerEncre car il faudrait savoir quelle cartouche l'utilisateur change
 	
 	private void changerEncreNoire(){
+		//Scanner sc = new Scanner(System.in);
 		String rep="";
 		//fait l'action de mettre en évidence les cartouches pour la retirer facilement
 		while ((rep!="yes")&&(rep!="no")){
@@ -115,5 +116,8 @@ public class Imprimante extends AppareilElectronique{
 		}
 	}
 			
+	public String toString(){
+		return "Imprimante "+super.toString()+"\nNiveau d'encre : Noir : "+nivNoir+"% Couleur: "+nivCouleur+"%";
+	}
 }
 		
