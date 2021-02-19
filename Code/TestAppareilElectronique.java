@@ -42,6 +42,23 @@ public class TestAppareilElectronique {
 		System.out.println();
 		
 		System.out.println(A2);
+		
+		 //saut de ligne
+		System.out.println();
+		
+		//doit afficher deux messages d'erreur
+		A1.setBatterie(120);
+		A1.setBatterie(-2);
+		A1.eteindre();
+		//doit afficher false
+		System.out.println(A1.getAllume());
+		A1.allumer();
+		//doit afficher true
+		System.out.println(A1.getAllume());
+		
+		
+		
+		
 	}
-
+	
 }

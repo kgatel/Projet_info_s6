@@ -33,6 +33,7 @@ public class Utilisateur extends Personne {
 		this.mdp=nouveauMdp;
 	}
 	
+	//toString
 	public String toString(){
 		return getPrenom()+" "+getNom()+"\nlogin : "+login+"\nmdp : "+mdp;
 	}

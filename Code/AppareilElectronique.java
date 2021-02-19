@@ -79,19 +79,21 @@ public class AppareilElectronique {
 	}	
 	
 	//Méthodes
-	protected void allumer(){
+	protected void allumer(){							//protected pour l'étendre aux classes supérieurs
+		System.out.println("L'appareil s'allume...");
 		//fait l'action d'allumer l'appareil;
 		allume=true;
 	}
 	
 	protected void eteindre(){
+		System.out.println("L'appareil s'éteint...");
 		//fait l'action d'éteindre l'appareil;
 		allume=false;
 	}
 	
-	//
+	//toString
 	public String toString(){
-		return "Nom : "+nom+"\n"+marque+" "+modele+"\n"+adresseIP+"\nBatterie : "+batterie+"%\nAllumé : "+allume;
+		return "Nom : "+nom+"\n"+marque+" "+modele+"\n"+adresseIP+"\nBatterie : "+batterie+"%\nAllumé : "+allume;  // '\n' saute une ligne
 	}		
 	
 }

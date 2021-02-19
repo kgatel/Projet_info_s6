@@ -28,13 +28,11 @@ public class Personne {
 	public void setPrenom(String prenom){
 		this.prenom=prenom;
 	}
-		
+	
+	//toString
 	public String toString(){
 		return prenom+" "+nom;
 	}
-	
-	//public static void main (String[] args)
-		
 	
 }
 
