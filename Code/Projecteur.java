@@ -20,17 +20,19 @@ public class Projecteur extends AppareilElectronique {
 			//fait l'action de projeter
 		}
 		else{
-			System.out.println("Votre projecteur est éteint");
+			setAllume(true);
+			System.out.println("Votre projecteur démarre");
 		}
 	}
 	
 	void arreterProjeter(){		//utile lorsqu'on a pas envie de partager son écran pendant une période de temps
 		if (getAllume()==true){
+			setAllume(false);
 			System.out.println("arret projection...");
 			//fait l'action de projeter
 		}
 		else{
-			System.out.println("Votre projecteur est éteint");
+			System.out.println("Votre projecteur est déjà éteint");
 		}
 	}
 	
