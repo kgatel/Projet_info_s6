@@ -46,7 +46,7 @@ public class Imprimante extends AppareilElectronique{
 	}
 	
 	//Méthodes
-	public void imprimer(int [] pages, int exemplaires, String orientation, String papier, boolean couleur, boolean restoVerso){   //pages tableau des pages à imprimer
+	public void imprimer(int [] pages, int exemplaires, String orientation, String papier, boolean couleur, boolean rectoVerso){   //pages tableau des pages à imprimer
 		
 		int i=0,j=0;
 		if (!getAllume()){ //si l'imprimante est éteinte
@@ -67,8 +67,14 @@ public class Imprimante extends AppareilElectronique{
 						}
 						else{ //toutes les conditions sont remplies pour imprimer
 							
-							System.out.println("est en train d'imprimer la page "+pages[i]+"..."); //affiche ce message chaque page
-							//fait l'action d'imprimer
+							if (rectoVerso){
+								System.out.println("est en train d'imprimer la page (mode recto/verso) "+pages[i]+"..."); //affiche ce message chaque page
+								//fait l'action d'imprimer en recto/verso;
+							}
+							else{
+								System.out.println("est en train d'imprimer la page (mode sans recto/verso) "+pages[i]+"..."); //affiche ce message chaque page
+								//fait l'action d'imprimer sans recto/verso;
+							}
 							
 							if (couleur==true){
 								this.nivNoir-=1;			//enleve 1% du niveau d'encre noire par page (à fixer)

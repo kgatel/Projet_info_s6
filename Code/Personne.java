@@ -31,7 +31,7 @@ public class Personne {
 	
 	//toString
 	public String toString(){
-		return prenom+" "+nom;
+		return "Prenom : "+prenom+"\nNom : "+nom;
 	}
 	
 }

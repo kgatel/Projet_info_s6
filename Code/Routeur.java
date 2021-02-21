@@ -35,7 +35,7 @@ public class Routeur extends AppareilElectronique {
 		else{
 			System.out.println("Veuillez rentrer le mot de passe : ");
 			Mdp = scan.nextLine();
-			if (Mdp.equals(this.mdp)){
+			if (Mdp.equals(this.mdp)){		//(Mdp==this.mdp)
 				System.out.println("Diffusion wifi...");
 				//fait l'action de diffuser la wifi
 			}

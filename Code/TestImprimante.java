@@ -57,7 +57,7 @@ public class TestImprimante {
 		System.out.println(imp1.getNivCouleur()+" "+imp1.getNivNoir());
 
 		int [] page={2,7,9};
-		imp1.imprimer(page,3,"Paysage","A4",false,true);
+		imp1.imprimer(page,3,"Paysage","A4",false,true);	//3 exemplaires
 		System.out.println(imp1.getNivCouleur()+" "+imp1.getNivNoir());
 		
 		imp1.changerEncreCouleure();
