@@ -29,11 +29,13 @@ public class Projecteur extends AppareilElectronique {
 		if (getAllume()==true){
 			setAllume(false);
 			System.out.println("arret projection...");
-			//fait l'action de projeter
+			//fait l'action de ne plus projeter
 		}
 		else{
 			System.out.println("Votre projecteur est déjà éteint");
 		}
 	}
+
+	//toString est la même que AppareilElectronique
 	
 }
