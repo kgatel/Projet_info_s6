@@ -6,6 +6,7 @@ public class Ordinateur extends AppareilElectronique {
 	private Utilisateur user;
 	private Imprimante imp;
 	private Projecteur proj;
+	private boolean internet;
 	
 	//constructeurs
 	public Ordinateur(){
@@ -13,13 +14,15 @@ public class Ordinateur extends AppareilElectronique {
 		user=new Utilisateur();
 		imp=new Imprimante();
 		proj=new Projecteur();
+		internet=false;
 	}
 		
-	public Ordinateur(String Nom, String Modele, String Marque, String AdresseIP, int Batterie, boolean Allume, Utilisateur user1, Imprimante imp1, Projecteur proj1){
+	public Ordinateur(String Nom, String Modele, String Marque, String AdresseIP, int Batterie, boolean Allume, Utilisateur user1, Imprimante imp1, Projecteur proj1, boolean co){
 		super(Nom,Modele,Marque,AdresseIP,Batterie,Allume);
 		this.user=user1;
 		this.imp=imp1;
 		this.proj=proj1;
+		this.internet=co;
 		}
 
 	//accesseurs
@@ -35,6 +38,10 @@ public class Ordinateur extends AppareilElectronique {
 		return this.proj;
 	}
 	
+	public boolean getinternet(){
+		return this.internet;
+	}
+	
 	public void setUtilisateur(Utilisateur user2){
 		this.user=user2;
 	}
@@ -47,10 +54,13 @@ public class Ordinateur extends AppareilElectronique {
 		this.proj=proj2;
 	}
 	
-	// rajouter des fonctions genre se connecter, se déconnecter à voir + la toString (en utilisant celles de Utilisateur imprimante et projecteur ?) + la classe Test
+	public void setinternet(boolean int1){
+		this.internet=int1;
+	}
+	// rajouter des fonctions genre se internetr, se déinternetr à voir + la toString (en utilisant celles de Utilisateur imprimante et projecteur ?) + la classe Test
 	
 	//Méthodes	
-	public void seConnecter(Utilisateur User){
+	public void seconnecter(Utilisateur User){
 		Scanner scan = new Scanner(System.in);
 		String Login,Mdp;
 		if (!getAllume()){
@@ -68,7 +78,7 @@ public class Ordinateur extends AppareilElectronique {
 				Mdp = scan.nextLine();
 				if ( (Login.equals(User.getLogin()))&&(Mdp.equals(User.getMdp())) ){
 					this.user=User;
-					//fait l'action de se connecter;
+					//fait l'action de se internetr;
 					System.out.println("Vous êtes connecté");
 				}
 				else{
@@ -88,7 +98,7 @@ public class Ordinateur extends AppareilElectronique {
 				System.out.println("Vous êtes déjà déconnecté");
 			}
 			else{			
-				//fait l'action de se déconnecter;
+				//fait l'action de se déinternetr;
 				this.user=new Utilisateur();
 				System.out.println("Deconnexion...");
 			}
@@ -97,7 +107,7 @@ public class Ordinateur extends AppareilElectronique {
 	
 	
 	public void Eteindre(){
-		//fait l'action de se déconnecter;
+		//fait l'action de se déinternetr;
 		this.user= new Utilisateur();
 		//fait l'action d'éteindre l'appareil;
 		super.eteindre();
@@ -172,6 +182,48 @@ public class Ordinateur extends AppareilElectronique {
 		}
 	}
 	
+	public void connexionWifi(Routeur rout){
+		if (!getAllume()){
+			System.out.println("L'ordinateur est éteint connexion wifi impossible");
+		}
+		else{
+			String mdp;
+			Scanner scan = new Scanner(System.in);
+			System.out.println("entrez le mot de passe");
+			mdp=scan.nextLine();
+			if (!mdp.equals(rout.getMdp())){
+				System.out.println("Mot de passe incorrect");
+			}
+			else{
+				this.internet=true;
+			}
+		}	
+	}
+	
+	public void Moodle(){
+		if (!getAllume()){
+			System.out.println("L'ordinateur est éteint connexion Moodle impossible");
+		}
+		else{
+			if (!internet){
+			System.out.println("L'ordinateur n'est pas connecté à internet connexion moodle impossible");
+			}
+			else{
+				if (this.user instanceof Professeur){
+					System.out.println("Accès au moodle version Professeur...");
+				}
+				else{
+					if (this.user instanceof Eleve){
+						System.out.println("Accès au moodle version élève...");
+					}
+					else{
+						System.out.println("Accès à Moodle impossible vous n'êtes ni un professeur ni un élève");
+					}
+				}
+			}
+		}
+	}
+		
 	public String toString(){
 		return super.toString()+"\n\nUser\n"+user+"\n\nImprimante\n"+imp+"\n\nProjecteur\n"+proj+"\n";
 	}
