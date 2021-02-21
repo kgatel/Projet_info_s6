@@ -223,7 +223,11 @@ public class Ordinateur extends AppareilElectronique {
 			}
 		}
 	}
-		
+	
+	public boolean equals(Ordinateur ordi){
+		return (ordi==this);
+	}
+	
 	public String toString(){
 		return super.toString()+"\n\nUser\n"+user+"\n\nImprimante\n"+imp+"\n\nProjecteur\n"+proj+"\n";
 	}

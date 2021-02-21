@@ -2,12 +2,12 @@ public class TestOrdinateur {
 
 	public static void main(String[] args) {
 		Ordinateur o1 = new Ordinateur();
-		System.out.println(o1);
+		/*System.out.println(o1);
 
 		Utilisateur user = new Utilisateur("Kevin","GATEL","kgatel","INSA2021");
 		Imprimante imp1 = new Imprimante("Imprimante INSA","FX456","HP","234.234.234.234",100,true,56,67);
 		Projecteur p1 = new Projecteur("Projecteur INSA","YU3456","Epson","145.145.145.145",100,true);
-		Ordinateur o2 = new Ordinateur("pc kevThibaut", "Zenbook","Asus","255.255.255.255",99,true,user,imp1,p1);
+		Ordinateur o2 = new Ordinateur("pc kevThibaut", "Zenbook","Asus","255.255.255.255",99,true,user,imp1,p1,false);
 		
 		System.out.println(o2);
 		
@@ -41,7 +41,9 @@ public class TestOrdinateur {
 		o2.seDeconnecter();
 		o2.seConnecter(prof1);
 		o2.Projeter();
-				
+				*/
+		Ordinateur o3 = new Ordinateur();
+		System.out.println(o1.equals(o3));
 	}
 
 }
