@@ -3,7 +3,7 @@ public class Ordinateur extends AppareilElectronique {
 	//attribut
 	private Utilisateur user;
 	private Imprimante imp;
-	private projecteur proj;
+	private Projecteur proj;
 	
 	//constructeurs
 	public Ordinateur(){
@@ -46,7 +46,4 @@ public class Ordinateur extends AppareilElectronique {
 	}
 	// rajouter des fonctions genre se connecter, se déconnecter à voir + la toString (en utilisant celles de Utilisateur imprimante et projecteur ?) + la classe Test
 		//fgvhbjnk
-	}
-		
 }
-

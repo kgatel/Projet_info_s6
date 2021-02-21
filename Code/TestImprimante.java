@@ -18,8 +18,12 @@ public class TestImprimante {
 		int [] pages= {1,2};
 		
 		System.out.println();
-
+		
+		//imprimante éteinte
+		imp1.imprimer(pages,1,"Paysage","A4",true,true);
+		
 		//doit imprimer
+		imp1.allumer();
 		imp1.imprimer(pages,1,"Paysage","A4",true,true);
 			
 		//doit afficher deux messages d'erreur

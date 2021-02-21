@@ -49,58 +49,63 @@ public class Imprimante extends AppareilElectronique{
 	public void imprimer(int [] pages, int exemplaires, String orientation, String papier, boolean couleur, boolean restoVerso){   //pages tableau des pages à imprimer
 		
 		int i=0,j=0;
-		if (   ((orientation!="Paysage")&&(orientation!="Portrait")) || ((papier!="A4")&&(papier!="A5"))  ){    //verifie que l'utilisateur entre les bons paramètres
-			System.out.println("Erreur orientation ou type papier");
+		if (!getAllume()){ //si l'imprimante est éteinte
+			System.out.println("Imprimante éteinte...");
 		}
 		else{
-			
-			while (j<exemplaires){ //ne finit que quand le nombre d'exemplaire a été imprimé
-				while (i<pages.length){
-					if ((nivNoir<=2)||(nivCouleur<=2)){	//on suppose qu'une impression prend au maximum 2% du niveau d'encre
-						System.out.println("Niveau d'encre trop faible, impossible d'imprimer...");
-						i=pages.length; //arreter la boucle
-						j=exemplaires; //tout arreter
-					}
-					else{ //toutes les conditions sont remplies pour imprimer
-						
-						System.out.println("est en train d'imprimer la page "+pages[i]+"..."); //affiche ce message chaque page
-						//fait l'action d'imprimer
-						
-						if (couleur==true){
-							this.nivNoir-=1;			//enleve 1% du niveau d'encre noire par page (à fixer)
-							this.nivCouleur-=1;	      	//enleve 1% du niveau d'encre couleure par page (à fixer)
+			if (   ((orientation!="Paysage")&&(orientation!="Portrait")) || ((papier!="A4")&&(papier!="A5"))  ){    //verifie que l'utilisateur entre les bons paramètres
+				System.out.println("Erreur orientation ou type papier");
+			}
+			else{
+				
+				while (j<exemplaires){ //ne finit que quand le nombre d'exemplaire a été imprimé
+					while (i<pages.length){
+						if ((nivNoir<=2)||(nivCouleur<=2)){	//on suppose qu'une impression prend au maximum 2% du niveau d'encre
+							System.out.println("Niveau d'encre trop faible, impossible d'imprimer...");
+							i=pages.length; //arreter la boucle
+							j=exemplaires; //tout arreter
 						}
-						else{
-							this.nivNoir-=2;		//enleve 2% car l'utilisateur a choisi sans couleur
-						}
-						
-						if (nivNoir<10){
-							if (nivNoir>2){
-								System.out.println("Niveau d'encre noire bientôt épuisé");
+						else{ //toutes les conditions sont remplies pour imprimer
+							
+							System.out.println("est en train d'imprimer la page "+pages[i]+"..."); //affiche ce message chaque page
+							//fait l'action d'imprimer
+							
+							if (couleur==true){
+								this.nivNoir-=1;			//enleve 1% du niveau d'encre noire par page (à fixer)
+								this.nivCouleur-=1;	      	//enleve 1% du niveau d'encre couleure par page (à fixer)
 							}
 							else{
-								System.out.println("Veuillez changer votre encre noire...");
-								i=pages.length; //arreter la boucle
-								j=exemplaires; //tout arreter
+								this.nivNoir-=2;		//enleve 2% car l'utilisateur a choisi sans couleur
+							}
+							
+							if (nivNoir<10){
+								if (nivNoir>2){
+									System.out.println("Niveau d'encre noire bientôt épuisé");
+								}
+								else{
+									System.out.println("Veuillez changer votre encre noire...");
+									i=pages.length; //arreter la boucle
+									j=exemplaires; //tout arreter
+								}
+							}
+							
+							if (nivCouleur<10){
+								if (nivCouleur>2){
+									System.out.println("Niveau d'encre couleure bientôt épuisé");
+								}
+								else{
+									System.out.println("Veuillez changer votre encre couleure...");
+									i=pages.length; //arreter la boucle
+									j=exemplaires; //tout arreter
+								}
 							}
 						}
 						
-						if (nivCouleur<10){
-							if (nivCouleur>2){
-								System.out.println("Niveau d'encre couleure bientôt épuisé");
-							}
-							else{
-								System.out.println("Veuillez changer votre encre couleure...");
-								i=pages.length; //arreter la boucle
-								j=exemplaires; //tout arreter
-							}
-						}
+						i++; //page suivante
 					}
-					
-					i++; //page suivante
+					i=0;
+					j++; //exemplaire suivant			
 				}
-				i=0;
-				j++; //exemplaire suivant			
 			}
 		}
 	}
@@ -110,36 +115,44 @@ public class Imprimante extends AppareilElectronique{
 	public void changerEncreNoire(){
 		Scanner scan = new Scanner(System.in);
 		String rep="";
-		//fait l'action de mettre en évidence les cartouches pour la retirer facilement
-		while (  !( (rep.equals("yes"))||(rep.equals("no")) )  ){	//attend une réponse yes ou non de l'utilisateur
-			System.out.println("Cartouche noire changée ? (yes/no) : ");
-			rep=scan.nextLine();  //demande la réponse à l'utilisateur
-		}
-		if (rep.equals("no")){
-			System.out.println("Abandon...");
+		if (!getAllume()){ //si l'imprimante est éteinte
+			System.out.println("Imprimante éteinte...");
 		}
 		else{
-			System.out.println("Cartouche noire changée !");
-			this.nivNoir=100;
+			//fait l'action de mettre en évidence les cartouches pour la retirer facilement
+			while (  !( (rep.equals("yes"))||(rep.equals("no")) )  ){	//attend une réponse yes ou non de l'utilisateur
+				System.out.println("Cartouche noire changée ? (yes/no) : ");
+				rep=scan.nextLine();  //demande la réponse à l'utilisateur
+			}
+			if (rep.equals("no")){
+				System.out.println("Abandon...");
+			}
+			else{
+				System.out.println("Cartouche noire changée !");
+				this.nivNoir=100;
+			}
 		}
 	}
 	
 	public void changerEncreCouleure(){
 		Scanner scan = new Scanner(System.in);
 		String rep="";
-		//fait l'action de mettre en évidence les cartouches pour la retirer facilement
-		while (  !( (rep.equals("yes"))||(rep.equals("no")) )  ){
-			System.out.println("Cartouche couleure changée ? (yes/no) : ");
-			rep=scan.nextLine();	//demande la réponse à l'utilisateur
-			System.out.println(rep.equals("yes"));	
-			System.out.println(rep);
-		}
-		if (rep.equals("no")){
-			System.out.println("Abandon...");
+		if (!getAllume()){ //si l'imprimante est éteinte
+			System.out.println("Imprimante éteinte...");
 		}
 		else{
-			System.out.println("Cartouche couleure changée !");
-			this.nivCouleur=100;
+			//fait l'action de mettre en évidence les cartouches pour la retirer facilement
+			while (  !( (rep.equals("yes"))||(rep.equals("no")) )  ){
+				System.out.println("Cartouche couleure changée ? (yes/no) : ");
+				rep=scan.nextLine();	//demande la réponse à l'utilisateur
+			}
+			if (rep.equals("no")){
+				System.out.println("Abandon...");
+			}
+			else{
+				System.out.println("Cartouche couleure changée !");
+				this.nivCouleur=100;
+			}
 		}
 	}
 			
