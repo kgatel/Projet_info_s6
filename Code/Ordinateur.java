@@ -60,7 +60,7 @@ public class Ordinateur extends AppareilElectronique {
 	// rajouter des fonctions genre se internetr, se déinternetr à voir + la toString (en utilisant celles de Utilisateur imprimante et projecteur ?) + la classe Test
 	
 	//Méthodes	
-	public void seconnecter(Utilisateur User){
+	public void seConnecter(Utilisateur User){
 		Scanner scan = new Scanner(System.in);
 		String Login,Mdp;
 		if (!getAllume()){
@@ -223,13 +223,9 @@ public class Ordinateur extends AppareilElectronique {
 			}
 		}
 	}
-	
-	public boolean equals(Ordinateur ordi){
-		return (ordi==this);
-	}
-	
+		
 	public String toString(){
-		return super.toString()+"\n\nUser\n"+user+"\n\nImprimante\n"+imp+"\n\nProjecteur\n"+proj+"\n";
+		return super.toString()+"\n\nUtilisateur\n"+user+"\n\nImprimante"+imp+"\n\nProjecteur"+proj+"\n";
 	}
 	
 }

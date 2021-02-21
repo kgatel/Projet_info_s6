@@ -163,7 +163,7 @@ public class Imprimante extends AppareilElectronique{
 	}
 			
 	public String toString(){
-		return "Imprimante appareil\n"+super.toString()+"\nNiveau d'encre : Noir : "+nivNoir+"% Couleur: "+nivCouleur+"%";
+		return super.toString()+"\nNiveau d'encre : Noir : "+nivNoir+"% Couleur: "+nivCouleur+"%";
 	}
 }
 		
