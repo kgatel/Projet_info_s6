@@ -173,7 +173,7 @@ public class Ordinateur extends AppareilElectronique {
 	}
 	
 	public String toString(){
-		return "\n"+super.toString()+"\n\nUser :\n"+user+"\n\nImprimante :\n"+imp+"\n\nProjecteur :\n"+proj+"\n\n";
+		return super.toString()+"\n\nUser\n"+user+"\n\nImprimante\n"+imp+"\n\nProjecteur\n"+proj+"\n";
 	}
 	
 }

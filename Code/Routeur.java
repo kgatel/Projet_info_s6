@@ -35,7 +35,7 @@ public class Routeur extends AppareilElectronique {
 		else{
 			System.out.println("Veuillez rentrer le mot de passe : ");
 			Mdp = scan.nextLine();
-			if (Mdp.equals(this.mdp)){		//(Mdp==this.mdp)
+			if (Mdp.equals(this.mdp)){		//(Mdp==this.mdp) ne marche pas
 				System.out.println("Diffusion wifi...");
 				//fait l'action de diffuser la wifi
 			}
@@ -46,7 +46,7 @@ public class Routeur extends AppareilElectronique {
 	}
 	
 	public String toString(){
-		return super.toString()+"\nMdp : "+this.mdp;  //le mdp est diffusé en public ici (peut-etre changer plus tard)
+		return "Routeur appareil\n"+super.toString()+"\nMdp : "+this.mdp;  //le mdp est diffusé en public ici (peut-etre changer plus tard)
 	}
 	
 }

@@ -93,7 +93,7 @@ public class AppareilElectronique {
 	
 	//toString
 	public String toString(){
-		return "Nom : "+nom+"\n"+marque+" "+modele+"\n"+adresseIP+"\nBatterie : "+batterie+"%\nAllumé : "+allume;  // '\n' saute une ligne
+		return "\nNom : "+nom+"\nMarque : "+marque+"\nModele : "+modele+"\nAdresse IP : "+adresseIP+"\nBatterie : "+batterie+"%\nAllumé : "+allume;  // '\n' saute une ligne
 	}		
 	
 }

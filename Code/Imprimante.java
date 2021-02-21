@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Imprimante extends AppareilElectronique{
 	
 	//attributs
-	float nivNoir,nivCouleur; //niveau d'encre en pourcentage
+	private float nivNoir,nivCouleur; //niveau d'encre en pourcentage
 	
 	//constructeurs
 	public Imprimante(){
@@ -163,7 +163,7 @@ public class Imprimante extends AppareilElectronique{
 	}
 			
 	public String toString(){
-		return super.toString()+"\nNiveau d'encre : Noir : "+nivNoir+"% Couleur: "+nivCouleur+"%";
+		return "Imprimante appareil\n"+super.toString()+"\nNiveau d'encre : Noir : "+nivNoir+"% Couleur: "+nivCouleur+"%";
 	}
 }
 		

@@ -2,7 +2,8 @@ public class TestOrdinateur {
 
 	public static void main(String[] args) {
 		Ordinateur o1 = new Ordinateur();
-		
+		System.out.println(o1);
+
 		Utilisateur user = new Utilisateur("Kevin","GATEL","kgatel","INSA2021");
 		Imprimante imp1 = new Imprimante("Imprimante INSA","FX456","HP","234.234.234.234",100,true,56,67);
 		Projecteur p1 = new Projecteur("Projecteur INSA","YU3456","Epson","145.145.145.145",100,true);
@@ -40,8 +41,7 @@ public class TestOrdinateur {
 		o2.seDeconnecter();
 		o2.seConnecter(prof1);
 		o2.Projeter();
-		
-		
+				
 	}
 
 }
