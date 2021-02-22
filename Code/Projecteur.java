@@ -11,7 +11,7 @@ public class Projecteur extends AppareilElectronique {
 		super(Nom,Modele,Marque,AdresseIP,Batterie,Allume);
 	}
 	
-	//même accesseurs
+	//même accesseurs et mutateurs
 	
 	//Méthodes
 	void projeter(){

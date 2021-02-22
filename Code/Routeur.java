@@ -4,16 +4,19 @@ public class Routeur extends AppareilElectronique {
 	
 	//Attributs
 	private String mdp;
+	private boolean internet;
 	
 	//constructeurs
 	public Routeur(){
 		super();
 		mdp="";
+		internet=false;
 	}
 	
-	public Routeur(String Nom, String Modele, String Marque, String AdresseIP, int Batterie, boolean Allume, String Mdp){
+	public Routeur(String Nom, String Modele, String Marque, String AdresseIP, int Batterie, boolean Allume, String Mdp,boolean Internet){
 		super(Nom,Modele,Marque,AdresseIP,Batterie,Allume);
 		mdp=Mdp;
+		internet=Internet;
 	}
 	
 	//Accesseurs
@@ -21,8 +24,17 @@ public class Routeur extends AppareilElectronique {
 		return this.mdp;
 	}
 	
+	public boolean getInternet(){
+		return this.internet;
+	}
+	
+	//Mutateurs
 	public void setMdp(String Mdp){
 		this.mdp=Mdp;
+	}
+	
+	public void setInternet(boolean Internet){
+		this.internet=Internet;
 	}
 	
 	//Méthodes
@@ -38,6 +50,7 @@ public class Routeur extends AppareilElectronique {
 			if (Mdp.equals(this.mdp)){		//(Mdp==this.mdp) ne marche pas
 				System.out.println("Diffusion wifi...");
 				//fait l'action de diffuser la wifi
+				this.setInternet(true);
 			}
 			else{
 				System.out.println("Mdp incorrect impossible de diffuser wifi.");
@@ -46,7 +59,7 @@ public class Routeur extends AppareilElectronique {
 	}
 	
 	public String toString(){
-		return "Routeur appareil\n"+super.toString()+"\nMdp : "+this.mdp;  //le mdp est diffusé en public ici (peut-etre changer plus tard)
+		return "Routeur appareil\n"+super.toString()+"\nMdp : "+this.mdp+"\nInternet : "+this.internet;  //le mdp est diffusé en public ici (peut-etre changer plus tard)
 	}
 	
 }

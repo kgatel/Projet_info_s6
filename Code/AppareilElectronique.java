@@ -49,6 +49,7 @@ public class AppareilElectronique {
 		return allume;
 	}
 	
+	//Mutateurs
 	public void setNom(String Nom){
 		this.nom=Nom;
 	}

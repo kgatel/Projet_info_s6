@@ -42,6 +42,7 @@ public class Ordinateur extends AppareilElectronique {
 		return this.internet;
 	}
 	
+	//Mutateurs
 	public void setUtilisateur(Utilisateur user2){
 		this.user=user2;
 	}
@@ -57,7 +58,6 @@ public class Ordinateur extends AppareilElectronique {
 	public void setinternet(boolean int1){
 		this.internet=int1;
 	}
-	// rajouter des fonctions genre se internetr, se déinternetr à voir + la toString (en utilisant celles de Utilisateur imprimante et projecteur ?) + la classe Test
 	
 	//Méthodes	
 	public void seConnecter(Utilisateur User){
@@ -187,15 +187,25 @@ public class Ordinateur extends AppareilElectronique {
 			System.out.println("L'ordinateur est éteint connexion wifi impossible");
 		}
 		else{
-			String mdp;
-			Scanner scan = new Scanner(System.in);
-			System.out.println("entrez le mot de passe");
-			mdp=scan.nextLine();
-			if (!mdp.equals(rout.getMdp())){
-				System.out.println("Mot de passe incorrect");
-			}
+			Utilisateur vide = new Utilisateur();
+			if (this.user.Identite(vide)) System.out.println("Veuillez vous connecter avec votre login et votre mdp avant de vous connecter à internet");
 			else{
-				this.internet=true;
+				if (!rout.getInternet()){ //si le routeur n'est pas en train de diffuser internet
+					System.out.println("Le Routeur ne diffuse actuellement pas internet");
+				}
+				else{
+					String mdp;
+					Scanner scan = new Scanner(System.in);
+					System.out.println("Entrez le mot de passe du Routeur");
+					mdp=scan.nextLine();
+					if (!mdp.equals(rout.getMdp())){
+						System.out.println("Mot de passe incorrect");
+					}
+					else{
+						System.out.println("Connexion internet activée");
+						this.internet=true;
+					}
+				}
 			}
 		}	
 	}
@@ -205,25 +215,29 @@ public class Ordinateur extends AppareilElectronique {
 			System.out.println("L'ordinateur est éteint connexion Moodle impossible");
 		}
 		else{
-			if (!internet){
-			System.out.println("L'ordinateur n'est pas connecté à internet connexion moodle impossible");
-			}
+			Utilisateur vide = new Utilisateur();
+			if (this.user.Identite(vide)) System.out.println("Veuillez vous connecter avec votre login et votre mdp avant de vous connecter à Moodle");
 			else{
-				if (this.user instanceof Professeur){
-					System.out.println("Accès au moodle version Professeur...");
+				if (!internet){
+				System.out.println("L'ordinateur n'est pas connecté à internet connexion moodle impossible");
 				}
 				else{
-					if (this.user instanceof Eleve){
-						System.out.println("Accès au moodle version élève...");
+					if (this.user instanceof Professeur){
+						System.out.println("Accès au moodle version Professeur...");
 					}
 					else{
-						System.out.println("Accès à Moodle impossible vous n'êtes ni un professeur ni un élève");
+						if (this.user instanceof Eleve){
+							System.out.println("Accès au moodle version élève...");
+						}
+						else{
+							System.out.println("Accès à Moodle impossible vous n'êtes ni un professeur ni un élève");
+						}
 					}
 				}
 			}
 		}
 	}
-		
+
 	public String toString(){
 		return super.toString()+"\n\nUtilisateur\n"+user+"\n\nImprimante"+imp+"\n\nProjecteur"+proj+"\n";
 	}

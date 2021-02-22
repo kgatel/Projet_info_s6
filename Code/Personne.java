@@ -12,7 +12,8 @@ public class Personne {
 		this.nom=Nom2;
 		this.prenom=Prenom2;
 	}		
-		
+	
+	//Accesseurs
 	public String getNom(){
 		return nom;
 	}
@@ -20,7 +21,8 @@ public class Personne {
 	public String getPrenom(){
 		return prenom;
 	}
-		
+	
+	//Mutateurs
 	public void setNom(String nom){
 		this.nom=nom;
 	}

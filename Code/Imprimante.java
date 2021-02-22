@@ -27,6 +27,7 @@ public class Imprimante extends AppareilElectronique{
 		return this.nivCouleur;
 	}
 	
+	//Mutateurs
 	public void setNivNoir(float NivNoir){
 		if ((NivNoir>=0)&&(NivNoir<=100)){	//vérifie qu'il s'agit bien d'un pourcentage
 			this.nivNoir=NivNoir;

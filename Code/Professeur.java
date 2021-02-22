@@ -10,8 +10,6 @@ public class Professeur extends Utilisateur{
 		super(Prenom,Nom,Login,Mdp);
 	}
 	
-	//meme accesseurs
-	
-	//methodes
+	//meme accesseurs et mutateurs
 
 }

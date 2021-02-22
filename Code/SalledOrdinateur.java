@@ -152,6 +152,7 @@ public class SalledOrdinateur{
 		return this.Rout;
 	}
 	
+	//Mutateurs
 	public void setNom(String nom){
 		this.nom=nom;
 	}
