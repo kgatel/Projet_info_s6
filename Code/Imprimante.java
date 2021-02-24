@@ -8,8 +8,8 @@ public class Imprimante extends AppareilElectronique{
 	//constructeurs
 	public Imprimante(){
 		super();
-		nivNoir=0;
-		nivCouleur=0;
+		nivNoir=100;
+		nivCouleur=100;
 	}
 	
 	public Imprimante(String Nom, String Modele, String Marque, String AdresseIP, int Batterie, boolean Allume, float NivNoir, float NivCouleur){

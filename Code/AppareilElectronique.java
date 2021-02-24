@@ -11,7 +11,7 @@ public class AppareilElectronique {
 		modele="";
 		marque="";
 		adresseIP="";
-		batterie=0;
+		batterie=100;
 		allume=false;
 	}
 	
