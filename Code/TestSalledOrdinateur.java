@@ -36,10 +36,18 @@ public class TestSalledOrdinateur {
 		
 		SalledOrdinateur s2 = new SalledOrdinateur("Salle GM",tableaudOrdi,tableauImp,tableauProj,rout);
 		
+		//System.out.println(s2);
+		
+		//Méthodes
+		s2.retirerOrdi(3);
+		s2.retirerOrdi(2);
+		s2.ajouterOrdi(o3);
+		s2.retirerImp(0);
+		s2.ajouterImp(imp1);
+		s2.retirerProj(0);
+		s2.ajouterProj(p1);
+		
 		System.out.println(s2);
-		
-		//faire test Méthodes
-		
 	}
 	
 }

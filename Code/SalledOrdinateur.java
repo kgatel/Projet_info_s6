@@ -218,6 +218,7 @@ public class SalledOrdinateur{
 			System.out.println("Impossible de retirer cet ordinateur indice incorrect");
 		}
 		else{
+			System.out.println("Ordinateur retiré");
 			for (i=indice;i<nbOrdi-1;i++){
 				TabOrdi[i]=TabOrdi[i+1];
 			}
@@ -243,6 +244,7 @@ public class SalledOrdinateur{
 			System.out.println("Impossible de retirer cet Imprimante indice incorrect");
 		}
 		else{
+			System.out.println("Imprimante retirée");
 			for (i=indice;i<nbImp-1;i++){
 				TabImp[i]=TabImp[i+1];
 			}
@@ -269,6 +271,7 @@ public class SalledOrdinateur{
 			System.out.println("Impossible de retirer ce projecteur indice incorrect");
 		}
 		else{
+			System.out.println("Projecteur retiré");
 			for (i=indice;i<nbProj-1;i++){
 				TabProj[i]=TabProj[i+1];
 			}
