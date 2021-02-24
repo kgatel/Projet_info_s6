@@ -10,6 +10,7 @@ public class Main {
 			char choix3='z';
 			int i,j,k;
 			Scanner scan = new Scanner(System.in);
+			Scanner scanint = new Scanner(System.in);
 			String str;
 			while (choix!='q'){ //on demande à l'utilisateur ce qu'il veut faire
 				System.out.println("Que souhaitez vous faire ? tapez autre chose pour annuler");
@@ -20,8 +21,9 @@ public class Main {
 				System.out.println("e : ajouter un utilisateur");
 				System.out.println("f : supprimer un utilisateur");
 				System.out.println("q : arréter le programme");
-				str=scan.nextLine();
+				str= scan.nextLine();
 				choix=str.charAt(0);				// on récupére son choix
+				 
 				
 				switch(choix){				//en fonction du choix on va effectuer les actions correpsondantes
 					
@@ -37,8 +39,9 @@ public class Main {
 							System.out.println("b : ajouter une imprimante");
 							System.out.println("c : ajouter un projecteur");
 							System.out.println("d : ajouter un routeur");
-							str=scan.nextLine();
+							str= scan.nextLine();
 							choix2=str.charAt(0);		
+
 							
 							switch(choix2){
 								
@@ -47,29 +50,29 @@ public class Main {
 									Ordinateur orditemp = new Ordinateur();
 									String prenom,nom,login,mdp;
 									System.out.println("quel est le nom de votre ordinateur ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									orditemp.setNom(str);
 									System.out.println("quel est le modèle de votre ordinateur ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									orditemp.setModele(str);
 									System.out.println("quel est la marque de votre ordinateur ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									orditemp.setMarque(str);
 									System.out.println("quel est l'adresse IP de votre ordinateur ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									orditemp.setAdresseIP(str);
 									for (i=0;i<salle.getNbImp();i++){
 										System.out.println("---------------------\n"+"Imprimante "+(i+1)+"\n"+salle.getTabImp(i));
 									}
 									System.out.println("quel imprimante voulez vous reliez à l'ordinateur ?");
-									j=scan.nextInt();
+									j=scanint.nextInt();
 									j--;
 									orditemp.setImprimante(salle.getTabImp(j));
 									for (i=0;i<salle.getNbProj();i++){
 										System.out.println("---------------------\n"+"Projecteur "+(i+1)+"\n"+salle.getTabProj(i));
 									}
 									System.out.println("quel projecteur voulez vous reliez à l'ordinateur ?");
-									j=scan.nextInt();
+									j=scanint.nextInt();
 									j--;
 									orditemp.setProjecteur(salle.getTabProj(j));
 									salle.ajouterOrdi(orditemp);
@@ -79,16 +82,16 @@ public class Main {
 									
 									Imprimante imptemp = new Imprimante();
 									System.out.println("quel est le nom de votre imprimante ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									imptemp.setNom(str);
 									System.out.println("quel est le modèle de votre imprimante ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									imptemp.setModele(str);
 									System.out.println("quel est la marque de votre imprimante ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									imptemp.setMarque(str);
 									System.out.println("quel est l'adresse IP de votre imprimante ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									imptemp.setAdresseIP(str);
 									salle.ajouterImp(imptemp);
 									break;
@@ -97,16 +100,16 @@ public class Main {
 								
 									Projecteur projtemp = new Projecteur();
 									System.out.println("quel est le nom de votre projecteur ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									projtemp.setNom(str);
 									System.out.println("quel est le modèle de votre projecteur ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									projtemp.setModele(str);
 									System.out.println("quel est la marque de votre projecteur ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									projtemp.setMarque(str);
 									System.out.println("quel est l'adresse IP de votre projecteur ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									projtemp.setAdresseIP(str);
 									salle.ajouterProj(projtemp);				
 									break;
@@ -115,24 +118,25 @@ public class Main {
 									
 									Routeur routemp = new Routeur();
 									System.out.println("quel est le nom de votre routeur ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									routemp.setNom(str);
 									System.out.println("quel est le modèle de votre routeur ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									routemp.setModele(str);
 									System.out.println("quel est la marque de votre routeur ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									routemp.setMarque(str);
 									System.out.println("quel est l'adresse IP de votre routeur ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									routemp.setAdresseIP(str);
 									System.out.println("quel est le mot de passe du routeur ?");
-									str=scan.nextLine();
+									str= scan.nextLine();
 									routemp.setMdp(str);
 									salle.setRouteur(routemp);
 									break;
 							}
 						}
+						choix2='z';
 						break;
 						
 					case 'c':					//supprimer un appareil
@@ -143,8 +147,9 @@ public class Main {
 							System.out.println("b : supprimer une imprimante");
 							System.out.println("c : supprimer un projecteur");
 							System.out.println("d : supprimer un routeur");
-							str=scan.nextLine();
+							str= scan.nextLine();
 							choix2=str.charAt(0);
+							 
 							
 							switch(choix2){
 								
@@ -154,7 +159,7 @@ public class Main {
 										System.out.println("---------------------\n"+"Ordinateur "+(i+1)+"\n"+salle.getTabOrdi(i));
 									}
 									System.out.println("quel ordinateur voulez vous supprimer ?");
-									j=scan.nextInt();
+									j=scanint.nextInt();
 									salle.retirerOrdi(j-1);
 									break;
 								
@@ -164,7 +169,7 @@ public class Main {
 										System.out.println("---------------------\n"+"Imprimante "+(i+1)+"\n"+salle.getTabImp(i));
 									}
 									System.out.println("quel imprimante voulez vous supprimer ?");
-									j=scan.nextInt();
+									j=scanint.nextInt();
 									salle.retirerImp(j-1);
 									break;
 								
@@ -174,7 +179,7 @@ public class Main {
 										System.out.println("---------------------\n"+"Projecteur "+(i+1)+"\n"+salle.getTabProj(i));
 									}
 									System.out.println("quel projecteur voulez vous supprimer ?");
-									j=scan.nextInt();
+									j=scanint.nextInt();
 									salle.retirerProj(j-1);				
 									break;
 									
@@ -201,8 +206,9 @@ public class Main {
 							System.out.println("b : utiliser une imprimante");
 							System.out.println("c : utiliser un projecteur");
 							System.out.println("d : utiliser un routeur");
-							str=scan.nextLine();
+							str= scan.nextLine();
 							choix2=str.charAt(0);
+							 
 							
 							switch(choix2){
 								
@@ -213,7 +219,7 @@ public class Main {
 											System.out.println("---------------------\n"+"Ordinateur "+(i+1)+"\n"+salle.getTabOrdi(i));
 										}
 										System.out.println("quel ordinateur voulez vous utiliser ?");
-										j=scan.nextInt();
+										j=scanint.nextInt();
 										j--;
 										if ((j>=0)&&(j<salle.getNbOrdi())){			//vérifie que l'indice est correcte
 											
@@ -227,8 +233,9 @@ public class Main {
 												System.out.println("f : projeter");
 												System.out.println("g : Connexion Wifi");
 												System.out.println("h : Moodle");								
-												str=scan.nextLine();
+												str= scan.nextLine();
 												choix3=str.charAt(0);
+												 
 												
 												switch(choix3){
 													
@@ -248,7 +255,7 @@ public class Main {
 															System.out.println("---------------------\n"+"Utilisateur "+(i+1)+"\n"+salle.getTabUser(i));
 														}
 														System.out.println("quel utilisateur voulez vous utiliser ?");
-														k=scan.nextInt();
+														k=scanint.nextInt();
 														k--;
 														salle.getTabOrdi(j).seConnecter(salle.getTabUser(k));
 														break;
@@ -266,14 +273,15 @@ public class Main {
 														char choix4;
 														int [] pages= {1,2};
 														System.out.println("Combien d'exemplaires voulez vous imprimer ?");
-														exemplaires=scan.nextInt();
+														exemplaires=scanint.nextInt();
 														System.out.println("quelle orientation voulez vous (Paysage ou Portrait) ?");
-														orientation=scan.nextLine();
+														orientation= scan.nextLine();
 														System.out.println("quelle format voulez vous (A4 ou A5) ?");
-														papier=scan.nextLine();
+														papier= scan.nextLine();
 														System.out.println("Voulez vous imprimer en couleur o/n ?");
-														str=scan.nextLine();
+														str= scan.nextLine();
 														choix4=str.charAt(0);
+														 
 														if (choix4=='o'){
 															couleur=true;
 														}
@@ -281,8 +289,9 @@ public class Main {
 															couleur=false;
 														}
 														System.out.println("Voulez vous imprimer en recto-verso o/n ?");
-														str=scan.nextLine();
+														str= scan.nextLine();
 														choix4=str.charAt(0);
+														 
 														if (choix4=='o'){
 															rectoverso=true;
 														}
@@ -327,7 +336,7 @@ public class Main {
 											System.out.println("---------------------\n"+"Imprimante "+(i+1)+"\n"+salle.getTabImp(i));
 										}
 										System.out.println("quel imprimante voulez vous utiliser ?");
-										j=scan.nextInt();
+										j=scanint.nextInt();
 										j--;
 										if ((j>=0)&&(j<salle.getNbImp())){			//vérifie que l'indice est correcte
 											while (choix3!='q'){
@@ -336,8 +345,9 @@ public class Main {
 												System.out.println("b : éteindre l'imprimante");
 												System.out.println("c : changer l'encre de couleur");
 												System.out.println("d : changer l'encre noir");
-												str=scan.nextLine();
+												str= scan.nextLine();
 												choix3=str.charAt(0);
+												 
 												
 												switch(choix3){
 												
@@ -378,15 +388,16 @@ public class Main {
 											System.out.println("---------------------\n"+"Projecteur "+(i+1)+"\n"+salle.getTabProj(i));
 										}
 										System.out.println("quel Projecteur voulez vous utiliser ?");
-										j=scan.nextInt();
+										j=scanint.nextInt();
 										j--;
 										if ((j>=0)&&(j<salle.getNbProj())){			//vérifie que l'indice est correcte
 											while (choix3!='q'){
 												System.out.println("Que souhaitez vous faire ? tapez q pour quitter");
 												System.out.println("a : allumer le projecteur");
 												System.out.println("b : éteindre le projecteur");
-												str=scan.nextLine();
+												str= scan.nextLine();
 												choix3=str.charAt(0);
+												 
 												
 												switch(choix3){
 												
@@ -412,7 +423,7 @@ public class Main {
 									}
 									break;
 									
-								case 'd' :
+								case 'd' :					//utilisation d'un routeur
 									
 									if (salle.getRouteur().getNom()!=""){			//vérifie qu'il y a un routeur
 										while (choix3!='q'){
@@ -420,8 +431,9 @@ public class Main {
 											System.out.println("a : allumer le routeur");
 											System.out.println("b : éteindre le retour");
 											System.out.println("c : diffuser le wifi");
-											str=scan.nextLine();
+											str= scan.nextLine();
 											choix3=str.charAt(0);
+											 
 											
 											switch(choix3){
 											
@@ -456,37 +468,38 @@ public class Main {
 					case 'e':				//ajout d'un utilisateur
 					
 						System.out.println("Voulez vous ajouter un élève (e) ou un professeur (p) ?");
-						str=scan.nextLine();
+						str= scan.nextLine();
 						choix2=str.charAt(0);
+						 
 						if (choix2=='p'){
 							Professeur usertemp = new Professeur();
 							System.out.println("quel est le prénom de l'utilisateur ?");
-							str=scan.nextLine();
+							str= scan.nextLine();
 							usertemp.setPrenom(str);
 							System.out.println("quel est le nom de l'utilisateur ?");
-							str=scan.nextLine();
+							str= scan.nextLine();
 							usertemp.setNom(str);
 							System.out.println("quel est le login de l'utilisateur ?");
-							str=scan.nextLine();
+							str= scan.nextLine();
 							usertemp.setLogin(str);
 							System.out.println("quel est le Mot de passe de l'utilisateur ?");
-							str=scan.nextLine();
+							str= scan.nextLine();
 							usertemp.setMdp(str);
 							salle.ajouterUtilisateur(usertemp);
 						}
 						else{
 							Eleve usertemp = new Eleve();
 							System.out.println("quel est le prénom de l'utilisateur ?");
-							str=scan.nextLine();
+							str= scan.nextLine();
 							usertemp.setPrenom(str);
 							System.out.println("quel est le nom de l'utilisateur ?");
-							str=scan.nextLine();
+							str= scan.nextLine();
 							usertemp.setNom(str);
 							System.out.println("quel est le login de l'utilisateur ?");
-							str=scan.nextLine();
+							str= scan.nextLine();
 							usertemp.setLogin(str);
 							System.out.println("quel est le Mot de passe de l'utilisateur ?");
-							str=scan.nextLine();
+							str= scan.nextLine();
 							usertemp.setMdp(str);
 							salle.ajouterUtilisateur(usertemp);
 						}
@@ -499,7 +512,7 @@ public class Main {
 							System.out.println("---------------------\n"+"Utilisateur "+(i+1)+"\n"+salle.getTabUser(i));
 						}
 						System.out.println("quel Utilisateur voulez vous supprimer ?");
-						j=scan.nextInt();
+						j=scanint.nextInt();
 						salle.retirerUtilisateur(j-1);
 						break;
 				}
