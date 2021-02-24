@@ -5,14 +5,18 @@ public class SalledOrdinateur{
 	private int nbOrdi;
 	private int nbImp;
 	private int nbProj;
+	private int nbUser;
 	final int nbOrdiMax = 30;	//constante
 	final int nbImpMax = 5;	//constante
 	final int nbProjMax = 3;	//constante
+	final int nbUserMax = 10;	//constante
 	
 	private Ordinateur [] TabOrdi;	//tableau d'ordinateur
 	private Imprimante [] TabImp;	//tableau d'imprimante
 	private Projecteur [] TabProj;  //tableau de projecteur
+	private Utilisateur [] TabUser; //tableau d'utilisateur
 	private Routeur Rout;
+	
 	
 	
 	//constructeurs
@@ -22,9 +26,11 @@ public class SalledOrdinateur{
 		nbOrdi=0;
 		nbImp=0;
 		nbProj=0;
+		nbUser=0;
 		TabOrdi = new Ordinateur[nbOrdiMax];	//nbOrdiMax max
 		TabImp=new Imprimante[nbImpMax];	//nbImpMax max
 		TabProj=new Projecteur[nbProjMax];	//nbProjMax projecteurs
+		TabUser=new Utilisateur[nbUserMax];	//nbUserMax utilisateurs
 		for (i=0; i<nbOrdiMax; i++){
 			TabOrdi[i]=new Ordinateur();
 		}
@@ -34,16 +40,20 @@ public class SalledOrdinateur{
 		for (i=0; i<nbProjMax; i++){
 			TabProj[i]=new Projecteur();
 		}
+		for (i=0; i<nbUserMax; i++){
+			TabUser[i]=new Utilisateur();
+		}
 		Rout = new Routeur();
 	}
 
-	public SalledOrdinateur(String nom, Ordinateur [] TabOrdi0, Imprimante [] TabImp0, Projecteur [] TabProj0, Routeur rout){
+	public SalledOrdinateur(String nom, Ordinateur [] TabOrdi0, Imprimante [] TabImp0, Projecteur [] TabProj0, Utilisateur [] TabUser0, Routeur rout){
 		int i=0;
 		this.nom=nom;
 		
 		TabOrdi = new Ordinateur[nbOrdiMax];	//nbOrdiMax max
 		TabImp=new Imprimante[nbImpMax];	//nbImpMax max
 		TabProj=new Projecteur[nbProjMax];	//nbProjMax projecteurs
+		TabUser= new Utilisateur[nbUserMax];	//nbUserMax utilisateurs
 		
 		if (TabOrdi0.length<nbOrdiMax){
 			this.nbOrdi=TabOrdi0.length;
@@ -95,6 +105,22 @@ public class SalledOrdinateur{
 			}
 			i++;
 		}
+		i=0;
+		if (TabUser0.length<nbUserMax){		//meme chose pour le tableau de projecteur
+			this.nbUser=TabUser0.length;
+		}
+		else{
+			this.nbUser=nbUserMax;
+		}
+		while (i<nbUserMax){
+			if (i<nbUser){
+				this.TabUser[i]=TabUser0[i];
+			}
+			else{
+				this.TabUser[i]=new Utilisateur();
+			}
+			i++;
+		}
 		this.Rout=rout;
 	}
 	
@@ -114,6 +140,10 @@ public class SalledOrdinateur{
 	public int getNbProj(){
 		return nbProj;
 	}	
+	
+	public int getNbUser(){
+		return this.nbUser;
+	}
 	
 	public Ordinateur getTabOrdi(int indice){
 		Ordinateur ordi = new Ordinateur();
@@ -148,6 +178,17 @@ public class SalledOrdinateur{
 		}
 	}
 	
+	public Utilisateur getTabUser(int indice){
+		Utilisateur user = new Utilisateur();
+		if ((indice>=0)&&(indice<nbUserMax)){
+			return this.TabUser[indice];
+		}
+		else{
+			System.out.println("Erreur indice");
+			return user;
+		}
+	}
+	
 	public Routeur getRouteur(){
 		return this.Rout;
 	}
@@ -167,6 +208,10 @@ public class SalledOrdinateur{
 	
 	public void setNbProj(int nbProj){
 		this.nbProj=nbProj;
+	}
+	
+	public void setNbUser(int nbUser){
+		this.nbUser=nbUser;
 	}
 	
 	public void setTabOrdi(Ordinateur ordi, int indice){
@@ -190,6 +235,15 @@ public class SalledOrdinateur{
 	public void setTabProj(Projecteur proj, int indice){
 		if ((indice>=0)&&(indice<nbProjMax)){
 			this.TabProj[indice]=proj;
+		}
+		else{
+			System.out.println("Erreur indice");
+		}
+	}
+	
+	public void setTabUser(Utilisateur user, int indice){
+		if ((indice>=0)&&(indice<nbUserMax)){
+			this.TabUser[indice]=user;
 		}
 		else{
 			System.out.println("Erreur indice");
@@ -280,10 +334,40 @@ public class SalledOrdinateur{
 		}
 	}
 	
+	public void ajouterUtilisateur(Utilisateur user){
+		if (nbUser<nbUserMax){
+			TabUser[nbUser]=user;
+			nbUser++;
+			System.out.println("Ajout de l'utilisateur");
+		}
+		else{
+			System.out.println("Nombre d'utilisateur max atteint, impossible d'en rajouter");
+		}
+	}
+	
+	
+	public void retirerUtilisateur(int indice){
+		int i;
+		if (!((indice>=0)&&(indice<nbUser))){
+			System.out.println("Impossible de retirer cet utilisateur indice incorrect");
+		}
+		else{
+			System.out.println("utilisateur retiré");
+			for (i=indice;i<nbUser-1;i++){
+				TabUser[i]=TabUser[i+1];
+			}
+			nbUser--;
+		}
+	}
+	
 	public String toString(){
 		String rep="";
 		int i;
 		rep+="\n*************** "+nom+" *****************\nNombre d'Ordinateur : "+nbOrdi+"\nNombre d'imprimante : "+nbImp+"\nNombre de projecteur : "+nbProj+"\n";
+		for (i=0; i<nbUser;i++){
+			rep+="---------------------\n";
+			rep+="Utilisateur "+(i+1)+"\n"+TabUser[i];
+		}
 		for (i=0; i<nbOrdi;i++){
 			rep+="---------------------\n";
 			rep+="Ordinateur "+(i+1)+"\n"+TabOrdi[i];
