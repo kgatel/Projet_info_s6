@@ -183,9 +183,23 @@ public class Main {
 						
 						switch(choix2){
 							
-							case 'a' :
+							case 'a' :			//utilisation d'un ordinateur
 								
-								
+								if (salle.getTabOrdi(0).getNom()!=""){			//vérifie qu'il y a au moins un ordinateur
+									for (i=0;i<salle.getNbOrdi();i++){
+										System.out.println("---------------------\n"+"Ordinateur "+(i+1)+"\n"+salle.getTabOrdi(i));
+									}
+									System.out.println("quel ordinateur voulez vous utiliser ?");
+									j=scan.nextInt();
+									j--;
+									if ((j>=0)&&(j<salle.getNbOrdi())){			//vérifie que l'indice est correcte
+										
+									}
+									else{
+										
+									}
+								}
+									
 								break;
 								
 							case 'b' :			//utilisation d'une imprimante
