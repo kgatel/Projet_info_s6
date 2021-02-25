@@ -363,7 +363,7 @@ public class SalledOrdinateur{
 	public String toString(){
 		String rep="";
 		int i;
-		rep+="\n*************** "+nom+" *****************\nNombre d'Ordinateur : "+nbOrdi+"\nNombre d'imprimante : "+nbImp+"\nNombre de projecteur : "+nbProj+"\n";
+		rep+="\n*************** "+nom+" *****************\nNombre d'Utilisateur : "+nbUser+"\nNombre d'Ordinateur : "+nbOrdi+"\nNombre d'imprimante : "+nbImp+"\nNombre de projecteur : "+nbProj+"\n";
 		for (i=0; i<nbUser;i++){
 			rep+="---------------------\n";
 			rep+="Utilisateur "+(i+1)+"\n"+TabUser[i];

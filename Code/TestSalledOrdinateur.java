@@ -32,9 +32,10 @@ public class TestSalledOrdinateur {
 		Ordinateur [] tableaudOrdi = {o1,o2,o3};
 		Imprimante [] tableauImp = {imp1};
 		Projecteur [] tableauProj = {p1};
+		Utilisateur [] tableauUser = {user1,user2,user3};
 		Routeur rout = new Routeur("Routeur salle GM","TPLINK","HP","145.145.145.145",100,true,"INSA2021",true);
 		
-		SalledOrdinateur s2 = new SalledOrdinateur("Salle GM",tableaudOrdi,tableauImp,tableauProj,rout);
+		SalledOrdinateur s2 = new SalledOrdinateur("Salle GM",tableaudOrdi,tableauImp,tableauProj,tableauUser,rout);
 		
 		//System.out.println(s2);
 		

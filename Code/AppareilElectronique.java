@@ -11,7 +11,7 @@ public class AppareilElectronique {
 		modele="";
 		marque="";
 		adresseIP="";
-		batterie=100;
+		batterie=0;
 		allume=false;
 	}
 	
@@ -81,13 +81,15 @@ public class AppareilElectronique {
 	
 	//Méthodes
 	protected void allumer(){							//protected pour l'étendre aux classes supérieurs
-		System.out.println("L'appareil s'allume...");
+		if (allume) System.out.println("Votre appareil est déjà allumé");
+		else System.out.println("L'appareil s'allume...");
 		//fait l'action d'allumer l'appareil;
 		allume=true;
 	}
 	
 	protected void eteindre(){
-		System.out.println("L'appareil s'éteint...");
+		if (!allume) System.out.println("Votre appareil est déjà éteint");
+		else System.out.println("L'appareil s'éteint...");
 		//fait l'action d'éteindre l'appareil;
 		allume=false;
 	}
