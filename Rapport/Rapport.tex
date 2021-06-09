@@ -57,14 +57,14 @@ numbers=left}
 	\vspace{5mm}
 	\includegraphics[width=0.4\textwidth]{./Images/insa}\\[1.0 cm]
 
-	\textsc{\Large Mini-projet COO - GM3}\\[0.6cm]
+	\textsc{\Large Projet INFO GM3 - Vague 1 - Sujet 4}\\[0.6cm]
 
 	% Title
 	\HRule \\[0.5cm]
-	{ \Huge \bfseries Réalisation d'un jeu de dames en Java}\\[0.2cm]
+	{ \Huge \bfseries Réalisation d'une salle d'ordinateur Java}\\[0.2cm]
 	\HRule \\[0.75cm]
 
-	\includegraphics[width=0.7\textwidth]{./Images/Page_de_garde}\\[0.9 cm]
+	\includegraphics[width=0.7\textwidth]{./Images/pagedegarde}\\[0.9 cm]
 
 	% Author and supervisor
 	\begin{minipage}{0.4\textwidth}
@@ -79,8 +79,6 @@ numbers=left}
 	\begin{minipage}{0.4\textwidth}
 		\begin{flushright} \large
 			\emph{Enseignants:} \\
-			Mathieu \textsc{Bourgais} \\
-			{\small\href{mailto:mathieu.bourgais@insa-rouen.fr}								{mathieu.bourgais@insa-rouen.fr}}\\
 			Habib \textsc{Abdulrab} \\
 			{\small\href{mailto:habib.abdulrab@insa-rouen.fr}{habib.abdulrab@insa-rouen.fr}}
 		\end{flushright}
@@ -88,7 +86,7 @@ numbers=left}
 	\vspace*{\stretch{1}}
 
 	\vfill
-	{\large 23 Mai 2021}
+	{\large 19 Février 2021}
 \end{center}
 \end{titlepage}
 
@@ -99,53 +97,29 @@ numbers=left}
 \renewcommand{\chaptername}{}
 \chapter*{Introduction}
 
-Le mini-projet que nous avons choisi est la réalisation du jeu de dames en Java.\\
+Le mini-projet que nous avons choisi est la réalisation d'une salle d'ordinateur en Java.\\
 
-Le jeu de dames est un célèbre jeu de réflexion joué à deux inventé pour la première fois en Egypte antique vers -1500 avant J-C.
-Pour la version classique, le jeu de dames est composé d'un damier de 10 cases sur 10 cases de deux couleurs alternées et d'une vingtaine de pions par joueur disposés les uns en face des autres. Il existe également des variantes de ce jeu qui utilisent des damiers de 64 cases (8 sur 8) et 144 cases (12 par 12). 
-Le but du jeu est alors de capturer ou d'immobiliser toutes les pièces du joueur adverse. \\
+Nous allons donc programmer une salle d'ordinateur en Java. C'est à dire que nous allons créer un programme qui simulera la gestion d'une salle d'ordinateur comme on pourrait le rencontrer à l'INSA par exemple. Cette salle sera composée d'ordinateurs évidemment mais pas seulement. Nous allons y ajouter de nombreux appareils électroniques comme des routeurs, imprimantes... Afin de se rapprocher au plus possible de la réalité. Les appareils auront la possibilité d'interagir entre eux pour certaines actions. \\
 
 Le but de ce projet est d'utiliser habilement les concepts de la programmation objet, c'est-à-dire savoir écrire les différents diagrammes, maîtriser l'héritage entre les classes, le polymorphisme, la gestion des interfaces ou des classes arbitraires, etc...\\
 
-Pour bien répondre au problème, nous allons d'abord regarder le \textbf{diagramme de cas} (Use-cases) et le \textbf{diagramme de classe} (UML) afin de comprendre l'organisation du code.\\
+Pour bien répondre au problème, nous allons d'abord nous concentrer sur le \textbf{diagramme de classe} (UML) afin de comprendre l'organisation du code que nous allons implémenter.\\
 
 Ensuite, nous allons présenter et décrire le rôle de \textbf{chacune des classes} qui ont été nécessaires à la réalisation du projet.\\
 
 Enfin, nous verrons \textbf{les différents problèmes} que nous avons pu rencontrer lors de la programmation du jeu.
 
 
-\chapter{Les diagrammes}
-
-\section{Use-cases}
-
-\begin{figure}[H]
-	\center
-	\includegraphics[width=0.7\textwidth]{./Images/Use-cases}
-	\caption{Diagramme de cas pour le jeu de dames}
-\end{figure}\vspace{0.2cm}
-
-Les joueurs commencent par choisir la variante de leur choix pour jouer au jeu de dames. Ils ont le choix entre :
-
-\begin{itemize}[label=\textbullet]
-	\item Une partie rapide : damier 8 sur 8 où chaque joueur possède 16 pièces.
-	\item Une partie classique : damier 10 sur 10 où chaque joueur possède 20 pièces.
-	\item Une partie longue : damier 12 sur 12 où chaque joueur possède 24 pièces.
-\end{itemize}\vspace{0.3cm}
-
-Ils choisissent ensuite s'ils veulent ou non obliger le saut de pièce (dans la version classique le saut est obligatoire).\\
-
-La partie se lance et les joueurs déplacent chacun leur tour une pièce de leur couleur jusqu'à ce que la partie se termine.
-
+\chapter{Le diagramme}
 
 \section{UML}
 
 \begin{figure}[H]
 	\center
 	\includegraphics[width=1\textwidth]{./Images/UML}
-	\caption{Diagramme de classe pour le jeu de dames}
+	\caption{Diagramme de classe pour la salle d'ordinateur}
 \end{figure}\vspace{0.2cm}
 
-La classe \textit{Menu.java} est la première classe utilisée lors du lancement du programme. On définit ici la taille du plateau, on demande aux joueurs s'ils veulent ou non obliger les sauts et on récupère leur pseudo respectif.\\
 
 La classe \textit{Damier.java} est la classe centrale du projet. Elle permet le déplacement des pièces, l'affichage du damier et la gestion des cases. Grâce à la classe \textit{JPanel}, elle hérite de la méthode prédéfinie \textit{void paint(Graphics g)} qu'on a modifié en utilisant les méthodes \textit{void dessinerPiece()} et \textit{void dessinerCase()} et permet ainsi l'affichage du plateau.\\
 

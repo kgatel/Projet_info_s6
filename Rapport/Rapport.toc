@@ -1,0 +1,19 @@
+\babel@toc {french}{}
+\contentsline {chapter}{\numberline {1}Le diagramme}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}UML}{3}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Les classes}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Case}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Coordonnes}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Couleur}{5}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Damier}{5}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Joueur}{5}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Lanceur}{5}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Menu}{5}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Piece}{6}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Pion}{6}{section.2.9}%
+\contentsline {section}{\numberline {2.10}Reine}{6}{section.2.10}%
+\contentsline {section}{\numberline {2.11}Souris}{6}{section.2.11}%
+\contentsline {chapter}{\numberline {3}Problèmes rencontrés}{7}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Affichage}{7}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Ecoute de la souris}{7}{section.3.2}%
+\contentsline {chapter}{Conclusion}{8}{chapter*.4}%
