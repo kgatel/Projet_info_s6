@@ -120,99 +120,79 @@ Enfin, nous verrons \textbf{les différents problèmes} que nous avons pu rencon
 	\caption{Diagramme de classe pour la salle d'ordinateur}
 \end{figure}\vspace{0.2cm}
 
+Nous avons donc penser le programme en une classe salle d'ordinateur qui va donc correspondre à celle du sujet. Cette classe centrale va servir de lien entre tout les appareils électroniques de la salle. En effet elle va contenir dans des tableaux plusieurs éléments de chaque type et grâce à un menu, elle va permettre d'accéder à  tous les éléments de la salle et d'effectuer différentes actions sur chacun.\\
 
-La classe \textit{Damier.java} est la classe centrale du projet. Elle permet le déplacement des pièces, l'affichage du damier et la gestion des cases. Grâce à la classe \textit{JPanel}, elle hérite de la méthode prédéfinie \textit{void paint(Graphics g)} qu'on a modifié en utilisant les méthodes \textit{void dessinerPiece()} et \textit{void dessinerCase()} et permet ainsi l'affichage du plateau.\\
+On a également pensé à une autre classe commune à de nombreux éléments, la classe appareil électronique. Cette classe regroupe tous les types d'appareils possible que l'on peut rencontrer dans une salle d'ordinateur et chacun des différents types d'appareils vont hériter de cette classe commune.\\
 
-La méthode \textit{void afficherDeplacement(x,y : int)} va colorier les cases disponibles d'une certaine couleur pour le déplacement d'une pièce de coordonnées (x,y). On coloriera en bleu un déplacement sans saut de pièce et en rose pour un déplacement avec saut de pièce.\\
-
-La méthode \textit{void déplacer(x,y : int)} va permettre ou non le déplacement d'un pion déjà sélectionné sur une case de coordonnées (x,y). Le déplacement sera autorisé si la case a été colorée en bleu ou en rose. Si la case (x,y) est rose, on utilise la méthode \textit{boolean sautPossible} pour savoir s'il peut continuer à jouer, à savoir s'il peut sauter des pièces, le tour du joueur sera alors inchangé.
-
-A chaque saut, on utilise la méthode \textit{Coordonnees pieceMangee(x,y,i,j : int)} qui retourne les coordonnées de la pièce mangée, pour ensuite l'enlever du plateau.\\
-
-A la fin du tour, on utilise la méthode \textit{boolean peutEtreMange(x,y : int)} sur chaque pièce du joueur. S'il s'avère qu'une pièce peut être mangé au tour d'après, si l'option \textit{sautObligatoire} a été choisie par les joueurs en début de partie, tout déplacement du joueur suivant n'étant pas un saut est bloqué, un message d'erreur est affiché si nécessaire.\\
-
-La méthode \textit{boolean partieFinie()} retourne vrai si un joueur ne possède plus de pion ou ne peut plus en déplacer. La partie se termine et un message affiche le vainqueur du jeu.\\
-
-La classe \textit{Souris.java} va permettre aux joueurs de déplacer leur pièce grâce au clique de la souris. En effet, elle est issue de l'interface \textit{MouseListener} qui comprend de nombreuses méthodes prédéfinies. En modifiant la méthode \textit{void mousePressed(MouseEvent arg0)} on est capable de récupérer l'endroit où le joueur clique pour ensuite effectuer des actions sur le damier placé en attribut.
+Un autre élément important, la gestion des personnes et utilisateurs de la salle. Les utilisateurs hériteront de la classe Personne et ils permettront de se connecter aux ordinateurs. Nous avons également pensé à différencier les différents profils d'utilisateurs tel que les élèves et les professeurs qui n'auront donc pas les même droits d'action sur certains appareils.
 
 
 \chapter{Les classes}
 
-\section{Case}
+\section{Salle d'ordinateur}
 
-La classe \textit{Case} possède une couleur et une pièce. Pour les cases ne contenant aucune pièce, on fixera l'attribut \textit{piece} en \textit{null}. Il est alors impératif de vérifier à chaque fois si la pièce d'une case existe ($\neq$ \textit{null}) avant de demander la couleur d'un pion ou d'une reine.
+La classe \textit{Salle d'ordinateur} est la classe principale du programme. Elle va donc posséder un nom un tableau d'ordinateur, un tableau d'imprimante, un tableau de projecteur, un tableau d'utilisateur et un routeur. Ce sont tous les éléments de la salle. Elle va posséder des méthodes plutôt simple tel qu'un menu afin d'accéder à tous les éléments de la salle, Une méthode d'ajout et de retrait pour chaque appareil électronique différents. Mais également une méthode \textit{toString} redéfini afin de pouvoir afficher l'ensemble de la salle.
 
+\section{Personne}
 
-\section{Coordonnes}
+La classe \textit{Personne} ne possède aucune méthode. Elle a été créée dans le seul but d'être hérité par la classe Utilisateur et elle possède des informations inhérentes à chaque personne tel que le nom, le prénom... 
 
-La classe \textit{Coordonnees} ne possède aucune méthode. Elle a été créée dans le seul but de concevoir une fonction (présente dans la classe \textit{Damier}) qui retournerait les coordonnées d'une pièce mangée.
+\section{Utilisateur}
 
-\section{Couleur}
+La classe \textit{Utilisateur} possède deux variables d'instance login et mdp qui vont servir à  se connecter à un ordinateur et donc débloquer certaines fonctions uniquement disponible si un utilisateur est connecté sur l'ordinateur.
 
-La classe \textit{Couleur} est une classe énumération. Elle contient uniquement les deux couleurs nécessaires : Blanc et Noir.
+\section{Eleve}
 
-\section{Damier}
+La classe \textit{Eleve} ne possède rien hormis le fait qu'elle existe. Elle sert juste à différencier les élèves et les professeurs ce qui a un impact sur certaines fonctionnalités.
 
-La classe \textit{Damier} est la classe principale du programme. Elle regroupe l'ensemble des procédures de déplacement et d'affichage du jeu. Grâce à la classe \textit{JPanel}, elle hérite de la procédure \textit{paint()} qui va permettre ainsi en la redéfinissant d'afficher le damier et ses pièces. Ses attributs comme sa taille ou encore son booléen \textit{sautObligatoire} est fixé par l'utilisateur au début du jeu. Pour manipuler les pièces, il possède un tableau deux dimensions de \textit{Case} permettant ainsi de connaître l'ensemble du plateau à chaque instant.
+\section{Professeur}
 
-\section{Joueur}
+De même la classe \textit{Professeur} ne possède rien mais elle se différencie avec la classe élève juste en existant.
 
-La classe \textit{Joueur} contient en attribut le pseudo (fixé dans la classe \textit{Menu}) et la couleur du joueur. Le premier joueur a la couleur blanche, le second la couleur noire.
+\section{Appareils électroniques}
 
-\section{Lanceur}
+La classe \textit{Appareils électroniques} regroupe les caractéristiques communes à tous les appareils comme le modèle, la marque...\\
+Elle possède deux méthodes \textit{allumer()} et \textit{eteindre()} qui servent à allumer et éteindre un appareil en agissant sur leur variable etat qui est un booléen.
 
-La classe \textit{Lanceur} est la classe \textit{Main} de notre projet. Elle permet de lancer le jeu. Elle lance d'abord le menu puis affiche le damier et les pions afin de débuter une partie.
+\section{Ordinateur}
 
-\section{Menu}
+La classe \textit{Ordinateur} correspond à un ordinateur. Depuis celui-ci on peut se relier à une imprimante, un routeur ou un projecteur. On peut aussi se connecter avec un utilisateur et imprimer un document ou le projeter. On peut également grâce au routeur se connecter à internet.
 
-La classe \textit{Menu} demande aux joueurs le type de partie qu'ils veulent jouer afin de déterminer la taille du plateau. Elle demande également si les joueurs veulent jouer avec l'option "Saut Obligatoire". Les joueurs choisissent également leur pseudo grâce à cette classe. Cette classe sert uniquement au démarrage de la partie, avant même que le plateau soit affiché.
+\section{Routeur}
 
-\section{Piece}
+La classe \textit{Routeur} possède uniquement un mot de passe qui permet de se connecter à un internet avec un ordinateur
 
-La classe \textit{Piece} est la sous-classe de tous les pions et reines du plateau. Elle contient en attribut la couleur de la pièce et contient une seule méthode qui permet de dessiner la pièce selon sa couleur et selon s'il s'agit d'un pion ou d'une reine. Elle appartient forcément à une case c'est pour cette raison qu'il n'y a pas d'attribut \textit{Coordonnees}.
+\section{Projecteur}
 
-\section{Pion}
+La classe \textit{Projecteur} permet de projeter et d'arrêter la projection d'un document à partir d'un ordinateur.
 
-La classe \textit{Pion} hérite de la classe \textit{Piece}. Elle ne contient pas plus de méthode ni d'attribut.
+\section{imprimante}
 
-\section{Reine}
+La classe \textit{Imprimante} possède son niv d'encre de couleur et noir, et elle permet une fois relié à un ordinateur d'imprimer un document. On peut aussi recharger son niveau d'encre.
 
-La classe \textit{Reine} hérite de la classe \textit{Piece}. Identiquement à la classe \textit{Pion}, elle ne contient pas plus de méthode ni d'attribut.
-\section{Souris}
+\section{Main}
 
-La classe \textit{Souris} est une des plus importantes du projet. En effet, elle permet aux joueurs de pouvoir jouer avec la souris. C'est elle qui va gérer l'intéraction homme-machine. Grâce à l'interface \textit{MouseListener} déjà prédéfinie, elle a accès a plusieurs méthodes dont \textit{void mousePressed(MouseEvent arg0)} qui écoute chaque pression d'un bouton sur la souris. Avec les fonctions \textit{getX} et \textit{getY} on récupère les coordonnées où le joueur clique dans la fenêtre. Ces coordonnées sont ensuite filtrés puis selon la case, la pièce indiquée des décisions sont prises.
+La classe \textit{Main} et le programme principal de la salle. Elle consiste en une salle d'ordinateur et un vaste menu permettant d'accéder à tous les éléments de la salle et d'effectuer toutes les actions que l'on souhaite.
 
 \chapter{Problèmes rencontrés}
 
-\section{Affichage}
+\section{Modélisation}
 
-L'affichage du damier et des pièces fut notre première mission lors du codage du jeu.
-Il nous semblait primordial d'observer directement ce que l'on allait coder afin de remarquer les éventuelles erreurs ou oublis.\\
+Tout d'abord nous avons eu des difficultés à imaginer le programme. En effet comme c'était notre tout premier programme informatique en programmation par objet, le concept était tout nouveau pour nous. Nous avons d'abord pensé à tout faire d'un coup comme nous avions l'habitude de faire mais nous n'aurions eu aucun intérêt à le faire en Java. Notre première difficulté a donc été de penser par objet. Une fois que nous avions fait un brouillon des différentes classes que nous imaginions nous les avons remanié afin d'y intégrer la notion d'héritage car nous nous sommes rendus compte que certaines classes différents avaient des paramètres en commun qui pouvait se rassembler en une classe mère. Il a ensuite fallu réaliser notre premier diagramme de classe selon le modèle UML et même si cela n'a pris longtemps à comprendre comment cela fonctionnait c'était nouveau pour nous.
 
-Nous avons donc utiliser l'environnement \textit{swing} du paquet \textit{javax} afin de pouvoir afficher notre plateau. L'environnement étant tout nouveau pour nous, il nous a fallu beaucoup de temps afin de comprendre comment il s'utilise. Avec \textit{JFrame} nous pouvions ouvrir une nouvelle fenêtre et la renommer "Jeu de dames", puis avec l'héritage de la classe \textit{JPanel} la méthode \textit{paint} pouvait dessiner ce que l'on souhaitait sur la fenêtre en question.\\
+\section{Le programme principal}
 
-Au départ nous avons fait cet affichage sur un plateau d'une taille fixée 10 par 10. Puis nous voulions étendre cet affichage pour n'importe quelle taille donnée, il nous a fallu alors introduire une échelle TAILLE/taille et comprendre comment bien l'utiliser (TAILLE correspond à la taille de la fenêtre et taille correspond à la taille du damier). Cette échelle nous a permis notamment de centrer les pièces dans chaque case du damier. Ainsi, nous pouvons fabriquer un damier de la taille que l'on souhaite (réglable dans la classe \textit{Lanceur}).\\
-
-Malheureusement, un mini problème persiste encore au niveau de l'affichage. Il s'agit d'une barre noire verticale à droite de la fenêtre qui apparaît uniquement au lancement d'une partie. Il était pour nous impossible de régler ce léger problème ne comprenant pas l'origine de l'existence. Après réflexion, nous avons compris qu'il s'agissait d'un problème de paquet et non de codage, nous avons donc abandonné la recherche de la solution. Ce problème apparaissant en moyenne 2 fois sur 3 lancement de partie disparaît au premier clique de la souris, ce qui est au final peu dérangeant.
+Une autre difficulté plus surprenante à laquelle nous avons du faire face et la réalisation du programme principal, c'est à  dire la classe \textit{Main}. En effet paradoxalement une fois que nous avions pensé le programme par objet et implémenter les différentes classes et leur classe test respectives. Nous nous sommes rendus compte que nous n'avions pas de classe main nous permettant de faire tourner notre programme et ses classes. Nous avons donc réfléchi à la façon de faire et nous sommes partis sur une sorte de vaste menu permettant d'afficher et d'explorer la salle puis d'agir sur chacun des éléments de la salle. Ce menu se devait d'être récursif et qu'il ne s'arrête que lorsque l'utilisateur le souhaite. Nous avons du utiliser des variables locales choix pour définir la volonté de l'utilisateur et nous avons dû les réinitialiser à leur valeur dd'origine à chaque choix afin que le programme ne s'arrête jamais. Ce point en particulier nous a pris du temps à résoudre car notre menu finissait par s'arrêter et nous ne comprenions pas pourquoi.
  
-\section{Ecoute de la souris}
-
-L'écoute de la souris nous a également posé de nombreux problèmes. La classe \textit{MouseListener} étant nouvelle pour nous, la comprendre n'était pas chose facile au début du projet. En effet, nous voulions au départ écouter chaque case afin de récupérer la case cliquée directement. Nous avons alors remarqué des anomalies sur le comportement des méthodes de la classe. Nous avons donc décidé d'écouter le plateau entier puis de filtrer les coordonnées de l'endroit cliqué afin de déterminer la case correspondante.
-
-
 \chapter*{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
 
-Pour commencer ce projet nous a été très enrichissant d'un point de vue programmation évidemment. En effet Nous avions déjà effectué un projet informatique avec le langage Java auparavant. \\
-Cependant à ce moment là nous n'étions que très novice avec ce langage et nous ne connaissions que les bases. Cette fois çi nous avons pu mettre en application un peu plus de connaissances sur différents aspects. Cela nous a permis de nous familiariser d'autant plus avec la programmation par objet et de nous rendre compte de tous ses avantages.\\
-Notamment nous avons pu nous rendre pleinement compte de l'intérêt d'un modèle UML détaillé dans notre cas pour un projet déjà plus complexe que le précédent.\\
+Pour commencer ce projet nous a été très enrichissant d'un point de vue programmation évidemment. En effet il a constiuté notre tout premier programme dans le langage Java et surtout notre premier programme en programmation par objet.\\
+Cela nous a permis de découvrir la programmation par objet et ses intérêts en utilisant uniquement des éléments de base et nos connaissances en programmation classique. Le projet étant réalisé au tout début du semestre, il nous a permis d'appréhender le cous avec plus de facilité et même de prendre de l'avance par nous même sur certaines notions du cours.\\
+Cela a été également l'occasion pour nous de découvrir le diagramme de classe et le langage UML ainsi que son importance pour structurer avant de coder. De plus les diagrammes sont très important pour faciliter la compréhension du programme à une personne extérieur qui pourrait être amené à travailler sur le programme.\\
 
-D'autre part, nous étions assez familier avec le jeu de dames et connaissions plutôt bien ses règles. Nous avons d'abord pensé qu'il serait assez simple de programmer un tel jeu du fait de la simplicité des règles. Mais nous avons pu nous rendre compte que ce n'était pas le cas et nous avons dû faire face à de nombreuses difficultés que nous n'avions pas anticipé.\\
+Enfin il fût intéressant de pouvoir construire ce programme avec à la base deux façons différentes de voir le programme puis d'arriver à une solution composé des deux qui regroupe les avantages des deux. La complémentarité de nos deux points de vue a permis de réaliser quelque chose qu'il n'aurait pas été possible de faire seul.\\
 
-Afin de donner un aspect plus esthétique à notre programme nous avons souhaité ajouter un affichage graphique et une gestion des différentes actions avec la souris. Nous avons pour cela utilisé l'environnement \textit{javax} ainsi que la classe \textit{MouseListener}. Ces deux éléments étaient totalement nouveau pour nous et nous ont donné quelques difficultés pour se les approprier et les utiliser. Mais nous y sommes finalement parvenus et à l'avenir nous aurons déjà une expérience et devrions avoir plus de facilité à les utiliser. \\
-
-Enfin il fût intéressant de pouvoir construire ce programme avec à la base deux façons différentes de voir le programme puis d'arriver à une solution composé des deux qui regroupe les avantages des deux. La complémentarité des deux a permis de réaliser quelque chose qu'il n'aurait pas été possible de faire seul.\\
-
-Pour conclure, nous avons vraiment apprécié prendre part à ce projet et cela nous a permis de solidifier nos bases dans le langage java et d'apprivoiser de nouveaux environnement qui nous serons utiles pour la suite.
+Pour conclure, nous avons vraiment apprécié prendre part à ce projet et cela nous a permis de nous initier au langage Java et d'acquérir des bases dans ce langage qui nous seront utile pour la suite.
 
 \end{document}
